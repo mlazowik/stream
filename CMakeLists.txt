@@ -6,7 +6,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(SOURCE_FILES
         stream/line_reader.cpp
         stream/line_reader.h
-        stream/primitive_type_reader.cpp
         stream/primitive_type_reader.h
         stream/reader.h
         stream/stream.h
