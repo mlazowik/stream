@@ -4,16 +4,16 @@ project(stream)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-    src/line_reader.cpp
-    src/line_reader.h
-    src/primitive_type_reader.cpp
-    src/primitive_type_reader.h
-    src/reader.h
-    src/stream.h
-    src/stream_reader.cpp
-    src/stream_reader.h
-    src/string_reader.cpp
-    src/string_reader.h)
+        stream/line_reader.cpp
+        stream/line_reader.h
+        stream/primitive_type_reader.cpp
+        stream/primitive_type_reader.h
+        stream/reader.h
+        stream/stream.h
+        stream/stream_reader.cpp
+        stream/stream_reader.h
+        stream/string_reader.cpp
+        stream/string_reader.h)
 
 add_library(stream ${SOURCE_FILES})
 

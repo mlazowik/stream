@@ -1,27 +1,30 @@
 #include "primitive_type_reader.h"
 
 template <typename T>
-PrimitiveTypeReader::PrimitiveTypeReader(Stream &stream) : stream(stream) {
+PrimitiveTypeReader<T>::PrimitiveTypeReader(Stream &stream) : stream(stream) {
     this->value = new T;
     this->streamReader = new StreamReader(stream, (char*)this->value,
                                           sizeof(*this->value));
 }
 
-PrimitiveTypeReader::~PrimitiveTypeReader() {
+template <typename T>
+PrimitiveTypeReader<T>::~PrimitiveTypeReader() {
     delete this->value;
     delete this->streamReader;
 }
 
-void PrimitiveTypeReader::readNextChunk() {
+template <typename T>
+void PrimitiveTypeReader<T>::readNextChunk() {
     this->streamReader->readNextChunk();
 }
 
-bool PrimitiveTypeReader::finished() const {
+template <typename T>
+bool PrimitiveTypeReader<T>::finished() const {
     return this->streamReader->finished();
 }
 
 template <typename T>
-T PrimitiveTypeReader::getValue() const {
+T PrimitiveTypeReader<T>::getValue() const {
     if (!this->finished()) {
         throw std::logic_error("cannot return value, still reading");
     }
