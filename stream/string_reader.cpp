@@ -11,13 +11,17 @@ StringReader::~StringReader() {
 }
 
 void StringReader::readNextChunk() {
+    if (this->finished()) {
+        throw std::logic_error("cannot read: already finished");
+    }
+
+    this->charReader->readNextChunk();
+
     if (this->charReader->finished()) {
         this->value += this->charReader->getValue();
         delete this->charReader;
         this->charReader = getCharReader();
     }
-
-    this->charReader->readNextChunk();
 }
 
 bool StringReader::finished() const {
