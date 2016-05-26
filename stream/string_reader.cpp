@@ -29,6 +29,10 @@ bool StringReader::finished() const {
 }
 
 std::string StringReader::getValue() const {
+    if (!this->finished()) {
+        throw std::logic_error("cannot return value, still reading");
+    }
+
     return this->value;
 }
 
